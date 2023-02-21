@@ -32,6 +32,11 @@ enhuvudm_2020_fit <- survfit(Surv(data_2020$handltid[data_2020$Avgiftskategori =
 plot(enhuvudm_2020_fit, xlab="Days", main = '2020 En forskningshuvudman')
 abline(h = 0.5)
 
+# Plot by month
+# There must be a better way to do this
+dayinyear <- as.numeric(data_2020$inkom) - 18262
+hist(dayinyear, breaks = c(1, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365))
+
 
 # TODO: 
 # - clean data, remove names, sync datafile and replace file location strings
