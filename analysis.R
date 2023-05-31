@@ -45,7 +45,10 @@ enhuvudm_2020_fit <- survfit(Surv(data_allyears$handltid[data_allyears$Avgiftska
 enhuvudm_2021_fit <- survfit(Surv(data_allyears$handltid[data_allyears$Avgiftskategori == "En forskningshuvudman, 5000" & data_allyears$year == 2021]) ~1)
 enhuvudm_2022_fit <- survfit(Surv(data_allyears$handltid[data_allyears$Avgiftskategori == "En forskningshuvudman, 5000" & data_allyears$year == 2022]) ~1)
 
-plot(1-enhuvudm_2019_fit$surv ~ enhuvudm_2019_fit$time, xlab= "Days", ylab = "proportion with decision", main = 'Cat A: Single applicant', type = "l", lwd = 2, lty = 2, frame.plot = F, xlim = c(0, 365), col = "lightgreen")
+plot(1-enhuvudm_2019_fit$surv ~ enhuvudm_2019_fit$time, xlab= "Days", ylab = "proportion with decision", main = 'Cat A: Single applicant', type = "l", lwd = 2, lty = 2, 
+     frame.plot = F, xlim = c(0, 365), col = "lightgreen", xaxt = "n")
+axis(1, at= c(0, 40, 100, 200, 300, 365), labels= c(0, 40, 100, 200, 300, 365))
+abline(v = 40, lty = 2)
 lines(1-enhuvudm_2020_fit$surv ~ enhuvudm_2020_fit$time, lwd = 2, lty = 3, col = "green")
 lines(1-enhuvudm_2021_fit$surv ~ enhuvudm_2021_fit$time, lwd = 2, lty = 4, col = "forestgreen")
 lines(1-enhuvudm_2022_fit$surv ~ enhuvudm_2022_fit$time, lwd = 2, lty = 1, col = "darkgreen")
@@ -65,3 +68,4 @@ hist(dayinyear, breaks = c(1, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334
 # TODO: 
 # - contact EPM to find out more about misregistrations with negative processing times and why the means are different in their annual report
 # - analyse data for more application types
+
